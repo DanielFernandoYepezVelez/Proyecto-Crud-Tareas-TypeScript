@@ -1,13 +1,18 @@
-/* import { Router } from "express";
+import { Router } from "express";
 
-import indexController from "../controllers/index.controller";
+import tasksController from "../controllers/tasks.controller";
 
-class RoutesApp {
+class RoutesTasks {
   public router: Router = Router();
 
   constructor() {
-    this.router.get("/", indexController.index);
+    this.router.get("/create", tasksController.createTaskView);
+    this.router.post("/create", tasksController.createTask);
+    this.router.get("/list", tasksController.listTasksView);
+    this.router.get("/delete/:id", tasksController.deleteTask);
+    this.router.get("/edit/:id", tasksController.updateTaskView);
+    this.router.post("/edit/task/:id", tasksController.updateTask);
   }
 }
 
-export const routerIndex = new RoutesApp(); */
+export const routerTask = new RoutesTasks();

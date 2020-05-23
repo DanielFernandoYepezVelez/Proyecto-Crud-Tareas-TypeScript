@@ -1,12 +1,14 @@
 import "./config/database";
 
 import express, { Application } from "express";
-import exphbs from "express-handlebars";
 import Handlebars from "handlebars";
+import exphbs from "express-handlebars";
+import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access"; /* Importante para poder renderizar los datos en las vistas .hbs, se necesita por que el código es compilado */
 import morgan from "morgan";
 import path from "path";
 
 import { routerIndex } from "./routes/index";
+import { routerTask } from "./routes/tasks";
 
 class Sever {
   app: Application;
@@ -34,6 +36,9 @@ class Sever {
         extname: ".hbs",
         layoutsDir: path.join(this.app.get("views"), "layouts"),
         partialsDir: path.join(this.app.get("views"), "partials"),
+        handlebars: allowInsecurePrototypeAccess(
+          Handlebars
+        ) /* Importante para poder renderizar los datos en las vistas .hbs, se necesita por que el código es compilado */,
       })
     );
     this.app.set("view engine", ".hbs");
@@ -49,6 +54,7 @@ class Sever {
   /* Routes */
   public routes(): void {
     this.app.use(routerIndex.router);
+    this.app.use("/task", routerTask.router);
   }
 
   /* Static Files */
