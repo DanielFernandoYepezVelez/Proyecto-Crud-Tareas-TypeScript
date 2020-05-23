@@ -1,0 +1,31 @@
+{
+    "name": "03-crudcompletotypescript",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "ts-node ./src/index.ts",
+        "clean": "rimraf ./dist"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/express": "^4.17.6",
+        "@types/express-handlebars": "^3.1.0",
+        "@types/handlebars": "^4.1.0",
+        "@types/mongoose": "^5.7.21",
+        "@types/morgan": "^1.9.0",
+        "rimraf": "^3.0.2",
+        "ts-node": "^8.10.1",
+        "typescript": "^3.9.3"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-handlebars": "^4.0.4",
+        "handlebars": "^4.7.6",
+        "mongoose": "^5.9.15",
+        "morgan": "^1.10.0",
+        "npm": "^6.14.5"
+    }
+}
